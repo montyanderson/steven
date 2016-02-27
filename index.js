@@ -8,6 +8,12 @@ const app = express();
 const db = redis.createClient();
 
 app.use(helmet());
+
+app.use(function(req, res, next) {
+    res.set("X-PID", process.pid);
+    next();
+});
+
 app.use(express.static(path.join(__dirname, "public")));
 
 const messages = "chat-messages";
