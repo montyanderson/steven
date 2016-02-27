@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>steven</title>
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet">
+
+        <style>
+        .chat input {
+            width: 100%;
+        }
+        </style>
+
+    </head>
+    <body>
+
+        <div class="chat container">
+            <div class="messages"></div>
+            <input class="send" class="form-control">
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+        <script>
+        function getMessages(loop) {
+            $.get("/messages", function(data) {
+                if(typeof data !== "object") data = JSON.parse(data);
+
+                $(".messages").html("");
+
+                data.forEach(function(message) {
+                    $(".messages").append(
+                        $("<div></div>").text("steven: " + message);
+                    );
+                });
+
+                if(loop) setTimeout(function() {
+                    getMessages(true);
+                }, 1000);
+            });
+        }
+
+        getMessages(true);
+
+        $(".send").on("keypress", function(e) {
+            if(e.keyCode != 13) return;
+
+            $.get("/push?message=" + $(this)[0].value, function() {
+                getMessages();
+            });
+
+            $(this)[0].value = "";
+        });
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "steven",
+  "version": "1.0.0",
+  "description": "Be anonymous; be Steven.",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.13.4",
+    "helmet": "^1.1.0",
+    "redis": "^2.4.2",
+    "yargs": "^4.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/montyanderson/steven.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/montyanderson/steven/issues"
+  },
+  "homepage": "https://github.com/montyanderson/steven#readme"
+}
